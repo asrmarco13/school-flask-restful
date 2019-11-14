@@ -1,2 +1,2 @@
-# school-flask-restful-example
+# School Flask RestFul
 Flask project. Deploy on Heroku.
