@@ -8,6 +8,7 @@ from resources.student import Student
 from resources.schools_list import SchoolsList
 from resources.students_list import StudentsList
 from resources.user import UserRegister
+from resources.hello import Hello
 from security import authenticate, identity
 
 
@@ -29,6 +30,8 @@ api.add_resource(SchoolsList, '/schools')
 api.add_resource(StudentsList, '/students')
 
 api.add_resource(UserRegister, '/register')
+
+api.add_resource(Hello, '/')
 
 if __name__ == "__main__":
     from db import db
