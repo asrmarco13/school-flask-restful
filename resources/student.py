@@ -9,6 +9,18 @@ class Student(Resource):
 
     parser = reqparse.RequestParser()
     parser.add_argument(
+        'name',
+        type=str,
+        required=True,
+        help="Name cannot be blank"
+    )
+    parser.add_argument(
+        'surname',
+        type=str,
+        required=True,
+        help="Surname cannot be blank"
+    )
+    parser.add_argument(
         'age',
         type=int,
         required=True,
@@ -33,11 +45,8 @@ class Student(Resource):
         403: 'Not Authorized',
         404: 'Not found'
     })
-    def get(self):
-        print(request.args)
-        name = request.args.get('name')
-        surname = request.args.get('surname')
-        student = StudentModel.find_by_name_surname(name, surname)
+    def get(self, identification_number):
+        student = StudentModel.find_by_name_surname(identification_number)
         if student:
             return student.json()
 
@@ -51,18 +60,16 @@ class Student(Resource):
         500: 'Internal Server Error'
     })
     @api.expect(parser)
-    def post(self):
-        name = request.args.get('name')
-        surname = request.args.get('surname')
-        student = StudentModel.find_by_name_surname(name, surname)
+    def post(self, identification_number):
+        student = StudentModel.find_by_name_surname(identification_number)
         if student:
             return {
-                "message": "A student with %s $s already exist"
-                % (name, surname)
+                "message": "A student with identification number %s already exist"
+                % (identification_number)
             }, 400
 
         data = Student.parser.parse_args()
-        student = StudentModel(name, surname, **data)
+        student = StudentModel(identification_number, **data)
 
         try:
             student.save_to_db()
@@ -78,15 +85,15 @@ class Student(Resource):
         500: 'Internal Server Error'
     })
     @api.expect(parser)
-    def put(self):
-        name = request.args.get('name')
-        surname = request.args.get('surname')
-        student = StudentModel.find_by_name_surname(name, surname)
+    def put(self, identification_number):
+        student = StudentModel.find_by_name_surname(identification_number)
         data = Student.parser.parse_args()
 
         if student is None:
-            student = StudentModel(name, surname, **data)
+            student = StudentModel(identification_number, **data)
         else:
+            student.name = data['name']
+            student.surname = data['surname']
             student.age = data['age']
             student.classroom = data['classroom']
 
@@ -102,15 +109,13 @@ class Student(Resource):
     @api.doc(responses={
         200: 'OK'
     })
-    def delete(self):
-        name = request.args.get('name')
-        surname = request.args.get('surname')
-        student = StudentModel.find_by_name_surname(name, surname)
+    def delete(self, identification_number):
+        student = StudentModel.find_by_name_surname(identification_number)
 
         if student:
             student.delete_from_db()
 
         return {
-            "message": "%s %s deleted"
-            % (name, surname)
+            "message": "Student with identification number %s deleted"
+            % (identification_number)
         }

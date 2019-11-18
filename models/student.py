@@ -13,7 +13,8 @@ class StudentModel(db.Model):
     school_id = db.Column(db.Integer, db.ForeignKey('schools.id'))
     school = db.relationship('SchoolModel')
 
-    def __init__(self, name, surname, age, classroom, school_id):
+    def __init__(self, identification_number, name, surname, age, classroom, school_id):
+        self.id = identification_number
         self.name = name
         self.surname = surname
         self.age = age
@@ -22,6 +23,7 @@ class StudentModel(db.Model):
 
     def json(self):
         return {
+            "identification number": self.id,
             "name": self.name,
             "surname": self.surname,
             "age": self.age,
@@ -37,5 +39,5 @@ class StudentModel(db.Model):
         db.session.commit()
 
     @classmethod
-    def find_by_name_surname(cls, name, surname):
-        return cls.query.filter_by(name=name, surname=surname).first()
+    def find_by_name_surname(cls, identification_number):
+        return cls.query.filter_by(id=identification_number).first()

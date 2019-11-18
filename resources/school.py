@@ -29,8 +29,8 @@ class School(Resource):
 
         if school:
             return {
-                "message": "A school with name %s \
-                already exists" % (name)
+                "message": "A school with name %s already exists"
+                % (name)
             }, 400
 
         school = SchoolModel(name)
@@ -39,8 +39,7 @@ class School(Resource):
             school.save_to_db()
         except Exception:
             return {
-                "message": "An error occured creating \
-                the school"
+                "message": "An error occured creating the school"
             }, 500
 
         return school.json()
