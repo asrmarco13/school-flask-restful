@@ -1,4 +1,4 @@
-from flask_restful import Resource
+from flask_restplus import Resource
 
 
 class Hello(Resource):

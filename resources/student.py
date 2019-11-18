@@ -1,10 +1,12 @@
 from flask import request
-from flask_restful import Resource, reqparse
+from flask_restplus import Resource, reqparse, Namespace
 from flask_jwt import jwt_required
 from models.student import StudentModel
 
 
 class Student(Resource):
+    api = Namespace("School flask restplus")
+
     parser = reqparse.RequestParser()
     parser.add_argument(
         'age',
@@ -26,6 +28,11 @@ class Student(Resource):
     )
 
     @jwt_required()
+    @api.doc(responses={
+        200: 'OK',
+        403: 'Not Authorized',
+        404: 'Not found'
+    })
     def get(self):
         print(request.args)
         name = request.args.get('name')
@@ -38,6 +45,12 @@ class Student(Resource):
             "message": "Student not found"
         }, 404
 
+    @api.doc(responses={
+        201: 'Created',
+        404: 'Not found',
+        500: 'Internal Server Error'
+    })
+    @api.expect(parser)
     def post(self):
         name = request.args.get('name')
         surname = request.args.get('surname')
@@ -60,6 +73,11 @@ class Student(Resource):
 
         return student.json(), 201
 
+    @api.doc(responses={
+        200: 'OK',
+        500: 'Internal Server Error'
+    })
+    @api.expect(parser)
     def put(self):
         name = request.args.get('name')
         surname = request.args.get('surname')
@@ -81,6 +99,9 @@ class Student(Resource):
 
         return student.json()
 
+    @api.doc(responses={
+        200: 'OK'
+    })
     def delete(self):
         name = request.args.get('name')
         surname = request.args.get('surname')
