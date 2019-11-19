@@ -13,7 +13,10 @@ class StudentModel(db.Model):
     school_id = db.Column(db.Integer, db.ForeignKey('schools.id'))
     school = db.relationship('SchoolModel')
 
-    def __init__(self, identification_number, name, surname, age, classroom, school_id):
+    def __init__(self, identification_number,
+                 name, surname,
+                 age, classroom,
+                 school_id):
         self.id = identification_number
         self.name = name
         self.surname = surname
