@@ -1,11 +1,11 @@
 import sqlite3
 
-from flask_restful import Resource, reqparse
+from flask_restplus import Resource, reqparse, Namespace
 from models.user import UserModel
 
 
 class UserRegister(Resource):
-
+    api = Namespace ('School flask restplus')
     parser = reqparse.RequestParser()
     parser.add_argument('username',
                         type=str,
@@ -16,6 +16,11 @@ class UserRegister(Resource):
                         required=True,
                         help="Password cannot be blank")
 
+    @api.doc(responses={
+        201: 'Created',
+        400: 'Bad Request'
+    })
+    @api.expect(parser)
     def post(self):
         data = UserRegister.parser.parse_args()
         username = data['username']
