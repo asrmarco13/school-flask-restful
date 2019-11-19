@@ -15,7 +15,7 @@ I servizi sono stati documentati usando [Swagger UI](https://swagger.io/tools/sw
 
 [Swagger UI](https://swagger.io/tools/swagger-ui/) semplifica l'implementazione del back-end e l'uso dei servizi lato client.
 
-# Heroku
+### Heroku
 
 Il deploy dell'applicativo viene effettuato all'interno della piattaforma di clouding [Heroku](https://www.heroku.com/) che permette di sviluppare, distribuire e gestire app direttamente online. Essa si integra con Github. In questo modo gli utenti potranno sviluppare la loro app su una piattaforma esterna per poi importare il progetto all'interno del proprio account Heroku, lasciando che la piattaforma PaaS faccia il resto del “lavoro sporco” per renderla operativa e funzionante.
 
