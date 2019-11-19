@@ -5,7 +5,7 @@ from models.user import UserModel
 
 
 class UserRegister(Resource):
-    api = Namespace ('School flask restplus')
+    api = Namespace('School flask restplus')
     parser = reqparse.RequestParser()
     parser.add_argument('username',
                         type=str,
