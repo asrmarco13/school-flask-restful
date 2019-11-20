@@ -1,6 +1,6 @@
 from flask import request
 from flask_restplus import Resource, reqparse, Namespace
-from flask_jwt import jwt_required
+from flask_jwt_extended import jwt_required
 from models.student import StudentModel
 
 
@@ -39,9 +39,10 @@ class Student(Resource):
         help="Every student needs a school id"
     )
 
-    @jwt_required()
+    @jwt_required
     @api.doc(responses={
         200: 'OK',
+        401: 'Unauthorized',
         403: 'Not Authorized',
         404: 'Not found'
     })
