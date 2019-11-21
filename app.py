@@ -14,9 +14,9 @@ from resources.login import LoginUser
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
+# if env DATABASE_URL not found use default sqlite schema
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-    'DATABASE_URL', 'postgres://nzfyemgfddgrdc:c28b27270e2e04286dbc8df6005493e4fb9f1a2369da4fdff58f00c87583e64d@ec2-54-247-92-167.eu-west-1.compute.amazonaws.com:5432/d3i897tq0ljc43')
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///school.db'
+    'DATABASE_URL', 'sqlite:///school.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['RESTPLUS_VALIDATE'] = True
 app.secret_key = "marco"
