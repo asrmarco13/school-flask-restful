@@ -1,4 +1,3 @@
-from flask import request
 from flask_restplus import Resource, reqparse, Namespace
 from flask_jwt_extended import jwt_required
 from models.student import StudentModel
@@ -46,7 +45,8 @@ class Student(Resource):
         403: 'Not Authorized',
         404: 'Not found'
     })
-    def get(self, identification_number):
+    @classmethod
+    def get(cls, identification_number):
         student = StudentModel.find_by_name_surname(identification_number)
         if student:
             return student.json()
@@ -65,7 +65,8 @@ class Student(Resource):
         student = StudentModel.find_by_name_surname(identification_number)
         if student:
             return {
-                "message": "A student with identification number %s already exist"
+                "message": "A student with identification \
+                number %s already exist"
                 % (identification_number)
             }, 400
 
@@ -110,7 +111,8 @@ class Student(Resource):
     @api.doc(responses={
         200: 'OK'
     })
-    def delete(self, identification_number):
+    @classmethod
+    def delete(cls, identification_number):
         student = StudentModel.find_by_name_surname(identification_number)
 
         if student:
