@@ -2,6 +2,7 @@ Flask
 flask-restplus
 Flask-SQLAlchemy
 Flask-JWT-Extended
+Werkzeug==0.16.1
 PyJWT
 psycopg2
 uWSGI
