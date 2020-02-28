@@ -19,7 +19,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
     'DATABASE_URL', 'sqlite:///school.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['RESTPLUS_VALIDATE'] = True
-app.secret_key = "marco"
+app.config['JWT_SECRET_KEY'] = "marco"
 api = Api(
     app=app,
     description="API school-flask-restplus",
