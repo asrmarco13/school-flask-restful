@@ -38,6 +38,7 @@ class Student(Resource):
         help="Every student needs a school id"
     )
 
+    @classmethod
     @jwt_required
     @api.doc(responses={
         200: 'OK',
@@ -45,7 +46,6 @@ class Student(Resource):
         403: 'Not Authorized',
         404: 'Not found'
     })
-    @classmethod
     def get(cls, identification_number):
         student = StudentModel.find_by_name_surname(identification_number)
         if student:
@@ -108,10 +108,10 @@ class Student(Resource):
 
         return student.json()
 
+    @classmethod
     @api.doc(responses={
         200: 'OK'
     })
-    @classmethod
     def delete(cls, identification_number):
         student = StudentModel.find_by_name_surname(identification_number)
 
