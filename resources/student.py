@@ -38,7 +38,6 @@ class Student(Resource):
         help="Every student needs a school id"
     )
 
-    @classmethod
     @jwt_required
     @api.doc(responses={
         200: 'OK',
@@ -108,7 +107,6 @@ class Student(Resource):
 
         return student.json()
 
-    @classmethod
     @api.doc(responses={
         200: 'OK'
     })
