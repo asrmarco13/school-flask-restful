@@ -45,7 +45,7 @@ class Student(Resource):
         403: 'Not Authorized',
         404: 'Not found'
     })
-    def get(cls, identification_number):
+    def get(self, identification_number):
         student = StudentModel.find_by_name_surname(identification_number)
         if student:
             return student.json()
@@ -110,7 +110,7 @@ class Student(Resource):
     @api.doc(responses={
         200: 'OK'
     })
-    def delete(cls, identification_number):
+    def delete(self, identification_number):
         student = StudentModel.find_by_name_surname(identification_number)
 
         if student:
