@@ -10,6 +10,7 @@ from resources.students_list import StudentsList
 from resources.user import UserRegister
 from resources.hello import Hello
 from resources.login import LoginUser
+from resources.token_refresh import TokenRefresh
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -34,10 +35,9 @@ api.add_resource(School, '/school/<string:name>')
 api.add_resource(Student, '/student/<string:identification_number>')
 api.add_resource(SchoolsList, '/schools')
 api.add_resource(StudentsList, '/students')
-
 api.add_resource(UserRegister, '/register')
-
 api.add_resource(Hello, '/hello')
+api.add_resource(TokenRefresh, '/refresh')
 
 if __name__ == "__main__":
     from db import db
