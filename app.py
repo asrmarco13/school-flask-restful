@@ -12,6 +12,7 @@ from resources.hello import Hello
 from resources.login import LoginUser
 from resources.token_refresh import TokenRefresh
 from resources.logout import LogoutUser
+from blacklist import BLACKLIST
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -71,6 +72,11 @@ def revoked_token_callback():
         "description": "Token has been revoked",
         "error": "token_revoked"
     }), 401
+
+
+@jwt.token_in_blacklist_loader
+def check_if_token_in_blacklist(decrypted_token):
+    return decrypted_token['jti'] in BLACKLIST
 
 
 api.add_resource(LoginUser, '/login')
