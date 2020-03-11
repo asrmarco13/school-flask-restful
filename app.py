@@ -11,6 +11,7 @@ from resources.user import UserRegister
 from resources.hello import Hello
 from resources.login import LoginUser
 from resources.token_refresh import TokenRefresh
+from resources.logout import LogoutUser
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -80,6 +81,7 @@ api.add_resource(StudentsList, '/students')
 api.add_resource(UserRegister, '/register')
 api.add_resource(Hello, '/hello')
 api.add_resource(TokenRefresh, '/refresh')
+api.add_resource(LogoutUser, '/logout')
 
 if __name__ == "__main__":
     from db import db
