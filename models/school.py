@@ -7,7 +7,7 @@ class SchoolModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200))
 
-    students = db.relationship('StudentModel', lazy='dynamic')
+    students = db.relationship("StudentModel", lazy="dynamic")
 
     def __init__(self, name):
         self.name = name
@@ -15,7 +15,7 @@ class SchoolModel(db.Model):
     def json(self):
         return {
             "name": self.name,
-            "students": [student.json() for student in self.students.all()]
+            "students": [student.json() for student in self.students.all()],
         }
 
     @classmethod

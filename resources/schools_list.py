@@ -9,11 +9,12 @@ class SchoolsList(Resource):
         username = get_jwt_identity()
         schools = [school.json() for school in SchoolModel.query.all()]
         if username:
-            return {
-                "schools": schools
-            }, 200
+            return {"schools": schools}, 200
 
-        return {
-            "schools": [school['name'] for school in schools],
-            "message": "More data available if you log in"
-        }, 200
+        return (
+            {
+                "schools": [school["name"] for school in schools],
+                "message": "More data available if you log in",
+            },
+            200,
+        )
