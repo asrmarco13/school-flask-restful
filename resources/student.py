@@ -1,6 +1,6 @@
-from flask import request
 from flask_restplus import Resource, reqparse, Namespace
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, \
+    fresh_jwt_required
 from models.student import StudentModel
 
 
@@ -61,11 +61,13 @@ class Student(Resource):
         500: 'Internal Server Error'
     })
     @api.expect(parser)
+    @fresh_jwt_required
     def post(self, identification_number):
         student = StudentModel.find_by_name_surname(identification_number)
         if student:
             return {
-                "message": "A student with identification number %s already exist"
+                "message": "A student with identification \
+                number %s already exist"
                 % (identification_number)
             }, 400
 
