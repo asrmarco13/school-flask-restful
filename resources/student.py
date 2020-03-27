@@ -3,20 +3,25 @@ from flask_jwt_extended import jwt_required, fresh_jwt_required
 from models.student import StudentModel
 
 
+CANNOT_BLANK = "{} cannot be blank"
+SCHOOL_ID_REQUIRED = "Every student needs a school id"
+ERROR_INSERT_STUDENT = "An error occured insert the student"
+
+
 class Student(Resource):
     api = Namespace("School flask restplus")
 
     parser = reqparse.RequestParser()
-    parser.add_argument("name", type=str, required=True, help="Name cannot be blank")
+    parser.add_argument("name", type=str, required=True, help=CANNOT_BLANK.format("name"))
     parser.add_argument(
-        "surname", type=str, required=True, help="Surname cannot be blank"
+        "surname", type=str, required=True, help=CANNOT_BLANK.format("surname")
     )
-    parser.add_argument("age", type=int, required=True, help="Age cannot be blank")
+    parser.add_argument("age", type=int, required=True, help=CANNOT_BLANK.format("age"))
     parser.add_argument(
-        "classroom", type=str, required=True, help="Classroom cannot be blank"
+        "classroom", type=str, required=True, help=CANNOT_BLANK.format("classroom")
     )
     parser.add_argument(
-        "school_id", type=int, required=True, help="Every student needs a school id"
+        "school_id", type=int, required=True, help=SCHOOL_ID_REQUIRED
     )
 
     @jwt_required
@@ -56,7 +61,7 @@ class Student(Resource):
         try:
             student.save_to_db()
         except Exception:
-            return {"message": "An error occured inserting the student"}, 500
+            return {"message": ERROR_INSERT_STUDENT}, 500
 
         return student.json(), 201
 
@@ -77,7 +82,7 @@ class Student(Resource):
         try:
             student.save_to_db()
         except Exception:
-            return {"message": "An error occured inserting the student"}, 500
+            return {"message": ERROR_INSERT_STUDENT}, 500
 
         return student.json()
 

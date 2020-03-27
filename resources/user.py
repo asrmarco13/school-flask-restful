@@ -1,17 +1,19 @@
 import sqlite3
-
 from flask_restplus import Resource, reqparse, Namespace
 from models.user import UserModel
+
+
+CANNOT_BLANK = "{} cannot be blank"
 
 
 class UserRegister(Resource):
     api = Namespace("School flask restplus")
     parser = reqparse.RequestParser()
     parser.add_argument(
-        "username", type=str, required=True, help="Username cannot be blank"
+        "username", type=str, required=True, help=CANNOT_BLANK.format("username")
     )
     parser.add_argument(
-        "password", type=str, required=True, help="Password cannot be blank"
+        "password", type=str, required=True, help=CANNOT_BLANK.format("password")
     )
 
     @api.doc(responses={201: "Created", 400: "Bad Request"})

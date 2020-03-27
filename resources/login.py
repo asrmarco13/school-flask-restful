@@ -4,16 +4,19 @@ from werkzeug.security import safe_str_cmp
 from models.user import UserModel
 
 
+BLANK_ERROR = "{} cannot be blank"
+
+
 class LoginUser(Resource):
     api = Namespace("School flask restplus")
 
     parser = reqparse.RequestParser()
     parser.add_argument(
-        "username", required=True, type=str, help="Username cannot be blank"
+        "username", required=True, type=str, help=BLANK_ERROR.format("username")
     )
 
     parser.add_argument(
-        "password", required=True, type=str, help="Password cannot be blank"
+        "password", required=True, type=str, help=BLANK_ERROR.format("password")
     )
 
     @api.doc(responses={200: "OK", 400: "Bad Request", 404: "Not Found"})
