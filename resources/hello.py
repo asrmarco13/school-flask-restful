@@ -1,9 +1,8 @@
 from flask_restplus import Resource
-
-
-WELCOME_MESSAGE = "Welcome to my REST application deployed on Heroku"
+import constants
 
 
 class Hello(Resource):
-    def get(self):
-        return {"message": WELCOME_MESSAGE}
+    @classmethod
+    def get(cls):
+        return {"message": constants.WELCOME_MESSAGE}
