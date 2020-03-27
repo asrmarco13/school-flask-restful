@@ -25,8 +25,7 @@ class LoginUser(Resource):
 
     @api.doc(responses={200: "OK", 400: "Bad Request", 404: "Not Found"})
     @api.expect(parser)
-    @classmethod
-    def post(cls):
+    def post(self):
         data = LoginUser.parser.parse_args()
         user = UserModel.find_by_username(data["username"])
 

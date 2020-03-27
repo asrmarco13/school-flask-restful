@@ -11,8 +11,7 @@ class TokenRefresh(Resource):
 
     @jwt_refresh_token_required
     @api.doc(responses={200: "OK"})
-    @classmethod
-    def post(cls):
+    def post(self):
         current_user = get_jwt_identity()
         new_token = create_access_token(identity=current_user, fresh=False)
         return {"access_token": new_token}, 200

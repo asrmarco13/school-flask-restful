@@ -7,8 +7,7 @@ class School(Resource):
     api = Namespace("School flask restplus")
 
     @api.doc(responses={200: "OK", 404: "Not found"})
-    @classmethod
-    def get(cls, name: str):
+    def get(self, name: str):
         school = SchoolModel.find_by_name(name)
 
         if school:
@@ -19,8 +18,7 @@ class School(Resource):
     @api.doc(
         responses={201: "Created", 400: "Bad Request", 500: "Internal Server Error"}
     )
-    @classmethod
-    def post(cls, name: str):
+    def post(self, name: str):
         school = SchoolModel.find_by_name(name)
 
         if school:
@@ -36,8 +34,7 @@ class School(Resource):
         return school.json()
 
     @api.doc(responses={200: "OK"})
-    @classmethod
-    def delete(cls, name: str):
+    def delete(self, name: str):
         school = SchoolModel.find_by_name(name)
 
         if school:

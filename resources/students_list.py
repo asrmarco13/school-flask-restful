@@ -6,8 +6,7 @@ import constants
 
 class StudentsList(Resource):
     @jwt_optional
-    @classmethod
-    def get(cls):
+    def get(self):
         user_username = get_jwt_identity()
         students = [student.json() for student in StudentModel.find_all()]
         if user_username:

@@ -9,8 +9,7 @@ class LogoutUser(Resource):
 
     @jwt_required
     @api.doc(responses={200: "OK"})
-    @classmethod
-    def post(cls):
+    def post(self):
         jti = get_raw_jwt()["jti"]
         BLACKLIST.add(jti)
         return {"message": constants.USER_LOGOUT}, 200

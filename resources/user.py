@@ -21,8 +21,7 @@ class UserRegister(Resource):
 
     @api.doc(responses={201: "Created", 400: "Bad Request"})
     @api.expect(parser)
-    @classmethod
-    def post(cls):
+    def post(self):
         data = UserRegister.parser.parse_args()
         username = data["username"]
 

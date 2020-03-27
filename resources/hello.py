@@ -3,6 +3,5 @@ import constants
 
 
 class Hello(Resource):
-    @classmethod
-    def get(cls):
+    def get(self):
         return {"message": constants.WELCOME_MESSAGE}

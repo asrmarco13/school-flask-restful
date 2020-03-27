@@ -6,8 +6,7 @@ import constants
 
 class SchoolsList(Resource):
     @jwt_optional
-    @classmethod
-    def get(cls):
+    def get(self):
         username = get_jwt_identity()
         schools = [school.json() for school in SchoolModel.find_all()]
         if username:
