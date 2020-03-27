@@ -1,8 +1,7 @@
 from flask_restplus import Resource
+import constants
 
 
 class Hello(Resource):
     def get(self):
-        return {
-            "message": "Welcome to my REST application deployed on Heroku"
-        }
+        return {"message": constants.WELCOME_MESSAGE}
