@@ -5,3 +5,4 @@ Flask-JWT-Extended
 Werkzeug==0.16.1
 PyJWT
 uWSGI
+black
