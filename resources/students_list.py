@@ -7,7 +7,7 @@ class StudentsList(Resource):
     @jwt_optional
     def get(self):
         user_username = get_jwt_identity()
-        students = [student.json() for student in StudentModel.query.all()]
+        students = [student.json() for student in StudentModel.find_all()]
         if user_username:
             return {"students": students}, 200
 

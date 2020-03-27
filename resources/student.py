@@ -28,7 +28,7 @@ class Student(Resource):
             404: "Not found",
         }
     )
-    def get(self, identification_number):
+    def get(self, identification_number: int):
         student = StudentModel.find_by_name_surname(identification_number)
         if student:
             return student.json()
@@ -38,7 +38,7 @@ class Student(Resource):
     @api.doc(responses={201: "Created", 404: "Not found", 500: "Internal Server Error"})
     @api.expect(parser)
     @fresh_jwt_required
-    def post(self, identification_number):
+    def post(self, identification_number: int):
         student = StudentModel.find_by_name_surname(identification_number)
         if student:
             return (
@@ -62,7 +62,7 @@ class Student(Resource):
 
     @api.doc(responses={200: "OK", 500: "Internal Server Error"})
     @api.expect(parser)
-    def put(self, identification_number):
+    def put(self, identification_number: int):
         student = StudentModel.find_by_name_surname(identification_number)
         data = Student.parser.parse_args()
 
@@ -82,7 +82,7 @@ class Student(Resource):
         return student.json()
 
     @api.doc(responses={200: "OK"})
-    def delete(self, identification_number):
+    def delete(self, identification_number: int):
         student = StudentModel.find_by_name_surname(identification_number)
 
         if student:
