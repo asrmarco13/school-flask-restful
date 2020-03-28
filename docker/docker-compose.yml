@@ -1,0 +1,8 @@
+version: '3'
+services:
+  school-flask-restplus-app:
+    build: .
+    ports:
+      - "8080:8080/tcp"
+      - "8080:8080/udp"
+    restart: unless-stopped
