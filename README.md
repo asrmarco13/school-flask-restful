@@ -1,13 +1,13 @@
 # School Flask RestFul
 
 <p align="center">
-  <a href="https://github.com/asrmarco13/school-flask-restful"><img alt="Python" src="https://img.shields.io/pypi/pyversions/latest"></a>
+  <a href="https://github.com/asrmarco13/school-flask-restful"><img alt="Python" src="https://img.shields.io/github/pipenv/locked/python-version/asrmarco13/school-flask-restful"></a>
+  <a href="https://github.com/pallets/flask"><img alt="Flask" src="https://img.shields.io/github/pipenv/locked/dependency-version/asrmarco13/school-flask-restful/flask"></a>
   <a href="https://github.com/asrmarco13/school-flask-restful/blob/master/LICENSE"><img alt="License: GPL3" src="https://img.shields.io/github/license/asrmarco13/school-flask-restful"></a>
   <a href="https://github.com/asrmarco13/school-flask-restful"><img alt="Latest commit" src="https://img.shields.io/github/last-commit/asrmarco13/school-flask-restful/master"></a>
   <a href="https://github.com/asrmarco13/school-flask-restful/issues"><img alt="Open Issues" src="https://img.shields.io/github/issues/asrmarco13/school-flask-restful"></a>
   <a href="https://github.com/asrmarco13/school-flask-restful/issues?q=is%3Aissue+is%3Aclosed"><img alt="Closed Issues" src="https://img.shields.io/github/issues-closed/asrmarco13/school-flask-restful"></a>
   <a href="https://github.com/asrmarco13/school-flask-restful/pulls"><img alt="Pull requests" src="https://img.shields.io/github/issues-pr/asrmarco13/school-flask-restful"></a>
-  <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
   <a href="https://github.com/asrmarco13/school-flask-restful"><img alt="Stars" src="https://img.shields.io/github/stars/asrmarco13/school-flask-restful?style=social"></a>
   <a href="https://github.com/asrmarco13/school-flask-restful"><img alt="Watchers" src="https://img.shields.io/github/watchers/asrmarco13/school-flask-restful?style=social"></a>
 <p>
