@@ -13,6 +13,7 @@ from resources.login import LoginUser
 from resources.token_refresh import TokenRefresh
 from resources.logout import LogoutUser
 from blacklist import BLACKLIST
+from marsh import ma
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -93,6 +94,7 @@ if __name__ == "__main__":
     from db import db
 
     db.init_app(app)
+    ma.init_app(app)
 
     if app.config["DEBUG"]:
 
