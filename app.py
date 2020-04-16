@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, jsonify
-from flask_restplus import Api
+from flask_restx import Api
 from flask_jwt_extended import JWTManager
 from resources.school import School
 from resources.student import Student
