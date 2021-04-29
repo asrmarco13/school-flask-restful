@@ -1,0 +1,19 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  target-branch: master
+  ignore:
+  - dependency-name: flask-sqlalchemy
+    versions:
+    - 2.4.4
+    - 2.5.0
+  - dependency-name: pyjwt
+    versions:
+    - 2.0.1
+  - dependency-name: flask-jwt-extended
+    versions:
+    - 3.25.0
