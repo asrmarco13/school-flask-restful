@@ -11,7 +11,7 @@ Flask = "*"
 Flask-SQLAlchemy = "*"
 Flask-JWT-Extended = "*"
 PyJWT = "*"
-Werkzeug = "==0.16.1"
+Werkzeug = "==2.0.0"
 uWSGI = "*"
 
 [requires]
